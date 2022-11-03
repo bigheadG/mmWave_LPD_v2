@@ -19,7 +19,7 @@ mmWave Long Range People Detection
         BM201-LPD provids raw data as:
 
             Point Cloud Spherical(V6): range,elevation,azimuth,doppler,x,y,z
-            Target Object (V7): tid,posX,posY,posZ,velX,velYvelZ,accX,accY,accZ,ec[16],g,confidenceLevel
+            Target Object (V7): tid,posX,posY,posZ,velX,velY,velZ,accX,accY,accZ,ec[16],g,confidenceLevel
             Target Index (V8): tid and status
             Point Cloud Side Info (V9): snr,noise
 
