@@ -130,7 +130,7 @@ If Run demo program can not find any Raw data output:
         g: float        #Gating function gain
         confidenceLevel: float #Confidence Level  
     
-    V8: Target Index
+    Type V8: (Target Index)
         Each Target List consists of an array of target IDs, A targetID at index i is the target to which point i 
         of the previous frame's point cloud was associated. Valid IDs range from 0-249
         
@@ -142,7 +142,7 @@ If Run demo program can not find any Raw data output:
         254:Point not associated, located outside boundary of interest
         255:Point not associated, considered as noise
      
-     V9: Side information
+     Type V9: (Side Information)
         [(snr,noise),....]
         snr:    Int  #CFAR cell to side noise ratio in dB expressed in 0.1 steps of dB
         noise:  Int  #CFAR noise level of the side of the detected cell in dB expressed in 0.1 steps of dB 
