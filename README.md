@@ -22,7 +22,9 @@ mmWave Long Range People Detection
             Target Object (V7): tid,posX,posY,posZ,velX,velY,velZ,accX,accY,accZ,ec[16],g,confidenceLevel
             Target Index (V8): tid and status
             Point Cloud Side Info (V9): snr,noise
-
+            
+   Firmware version: i4.12.0
+   
 # Installing
 
 Library install for Python
