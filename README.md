@@ -156,7 +156,7 @@ If Run demo program can not find any Raw data output:
         v7: target object of array
         v8: target id of array
         v9: Side information
-        return dck,v6,v7,v8 
+        return dck,v6,v7,v8,v9
       
         getHeader()
         headerShow()
