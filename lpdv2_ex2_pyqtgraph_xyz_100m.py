@@ -1,5 +1,5 @@
 #=======================================================================
-# File Name: lpd_v24_2d_pyqtgraph_xyz_100m.py
+# File Name: lpdv2_ex2_pyqtgraph_xyz_100m.py
 #
 # Requirement:
 # Hardware: BM201-ISK (AWR6843)
