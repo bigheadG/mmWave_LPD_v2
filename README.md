@@ -91,67 +91,6 @@ If Run demo program can not find any Raw data output:
         numTLVs = 0
         subFrameNumber = 0
 
-# Data Structure(Raw Data):
-V6: Point Cloud<br/>
-Each Point Cloud list consists of an array of points,Each point data structure is defined as following
-   
-    point Struct:
-        elevation: float  #Elevation in radians
-        azimuth:  float   #Azimuth in radians 
-        doppler:  float   #Doppler in m/s
-        range:    float   #Range in meters
-        snr:      float   #SNR, ratio
-        
-V7: Target Object<br/>
-Each Target List consists of an array of targets. Each target data structure defind as following:
-    
-    target Struct:
-        tid: Int        #Track ID
-        posX: float     #Target position in X, m
-        posY: float     #Target position in Y, m
-        posZ: float     #Target position in Z, m
-        velX: float     #Target velocity in X, m/s
-        velY: float     #Target velocity in Y, m/s
-        velZ: float     #Target velocity in Z, m/s
-        accX: float     #Target velocity in X, m/s2 
-        accY: float     #Target velocity in Y, m/s2
-        accZ: float     #Target velocity in Z, m/s2
-        
-        
-V8: Target Index<br/> 
-Each Target List consists of an array of target IDs, A targetID at index i is the target to which point i of the previous frame's point cloud was associated. Valid IDs range from 0-249
-        
-    TargetIndex Struct(V8):
-        tragetID: Int #Track ID
-        {targetID0,targetID1,.....targetIDn}
-        
-        Other Target ID values:
-        253:Point not associated, SNR to weak
-        254:Point not associated, located outside boundary of interest
-        255:Point not associated, considered as noise
-   
-    Function call: 
-        
-        (dck,v6,v7,v8) = radar.tlvRead(False)
-        dck : True  : data avaliable
-              False : data invalid
-        v6: point cloud of array
-        v7: target object of array
-        v8: target id of array
-
-        return dck,v6,v7,v8 
-      
-        getHeader()
-        headerShow()
-        
-    Based on IWR6843 3D(r,az,el) -> (x,y,z)
-    el: elevation φ <Theta bottom -> Obj    
-    az: azimuth   θ <Theta Obj ->Y Axis 
-    
-    z = r * sin(φ)
-    x = r * cos(φ) * sin(θ)
-    y = r * cos(φ) * cos(θ)
-    
 # Data Structure:    
     (dck,v6,v7,v8) = radar.tlvRead(False)
     
@@ -188,31 +127,39 @@ Each Target List consists of an array of target IDs, A targetID at index i is th
         g: float        #Gating function gain
         confidenceLevel: float #Confidence Level  
     
-    Type v8: (Target Index)
-        ['targetID']
-        type: 'v8'
+    V8: Target Index
+      Each Target List consists of an array of target IDs, A targetID at index i is the target to which point i of the previous frame's point cloud was associated. Valid IDs range from 0-249
+        
+        tragetID: Int #Track ID
+        {targetID0,targetID1,.....targetIDn}
+        
         Other Target ID values:
         253:Point not associated, SNR to weak
         254:Point not associated, located outside boundary of interest
         255:Point not associated, considered as noise
      
-     Type v9: (Side information)
+     V9: Side information
         [(snr,noise),....]
         snr:    Int  #CFAR cell to side noise ratio in dB expressed in 0.1 steps of dB
         noise:  Int  #CFAR noise level of the side of the detected cell in dB expressed in 0.1 steps of dB 
+     
+          
         
-# Read Record Data File for Analysis point cloud Step by Step.
-    
-    this subroutine work with Point Cloud tool kit PCA-001 then you can step by step to analysis point cloud:
-    
-    (1)Read record file
-    readFile(fileName)
-    (v6smu,v7smu,v8smu) = radar.readFile("pc3Aop2021-xx-xx-xx-xx-34.csv")
+
    
-    (2)based on frameNumber output v6,v7 and v8 data
-    getRecordData(frameNumber)
-    (dck,v6,v7,v8) = radar.getRecordData(frameNumber)
-    dck : True : data avaliable
-    v6: point cloud of dataframe type data
-    v7: target object of dataframe type data  
-    v8: target id of dataframe type data
+   # Function call: 
+        
+        (dck,v6,v7,v8,v9) = radar.tlvRead(False)
+        dck : True  : data avaliable
+              False : data invalid
+        v6: point cloud of array
+        v7: target object of array
+        v8: target id of array
+        v9: Side information
+        return dck,v6,v7,v8 
+      
+        getHeader()
+        headerShow()
+        
+    
+   
