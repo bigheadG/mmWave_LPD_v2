@@ -154,6 +154,7 @@ If Run demo program can not find any Raw data output:
    # Function call: 
         
         (dck,v6,v7,v8,v9) = radar.tlvRead(False)
+        
         dck : True  : data avaliable
               False : data invalid
         v6: point cloud of array
